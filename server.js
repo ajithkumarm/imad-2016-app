@@ -58,15 +58,19 @@ return htmlTemplate;
 }
 var pool = new Pool(config);
 app.get('/test-db', function (req, res) {
-    pool.query(SELECT * FROM names, function (err,result){
-        if(err){
-            res.status(500).send(err.toString());
-        }
-        else{
-            res.send(JSON.stringify(result));
-        }
+    pool.query('SELECT * FROM names', function(err,result) {
+       if(err){
+           res.status(500).send(err.toString());
+       } 
+       else{
+           res.send(JSON.stringify(result));
+       } 
+        
+        
     });
-  
+    
+    
+
 });
 
 app.get('/', function (req, res) {
